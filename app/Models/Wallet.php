@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wallet extends Model
 {
-    protected $fillable = ['user_id', 'balance', 'currency_id'];
+    protected $fillable = ['user_id','name','balance'];
 
     public function user() {
         return $this->belongsTo('App\Models\User');
@@ -16,7 +16,8 @@ class Wallet extends Model
         return $this->hasMany('App\Models\Transaction');
     }
 
-    public function currency() {
-        return $this->belongsTo('App\Models\Currency');
+    public function balances()
+    {
+        return $this->hasMany(WalletBalance::class);
     }
 }
