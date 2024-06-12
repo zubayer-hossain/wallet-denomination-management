@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/wallet', [WalletController::class, 'store'])->name('wallet.store');
     Route::delete('/wallet', [WalletController::class, 'destroy'])->name('wallet.destroy');
+    Route::get('/wallet/{wallet_id}/balances', [WalletController::class, 'getBalances'])->name('wallet.balances');
+
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::post('/wallet/{wallet_id}/transactions', [TransactionController::class, 'storeTransaction'])->name('wallet.transactions.store');
+    Route::get('/wallet/{wallet_id}/transactions', [TransactionController::class, 'getTransactions'])->name('wallet.transactions.index');
 });
 
 require __DIR__.'/auth.php';
