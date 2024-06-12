@@ -9,11 +9,11 @@ class Wallet extends Model
     protected $fillable = ['user_id','name','balance'];
 
     public function user() {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function transactions() {
-        return $this->hasMany('App\Models\Transaction');
+        return $this->hasMany(Transaction::class);
     }
 
     public function balances()

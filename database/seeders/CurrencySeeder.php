@@ -26,6 +26,7 @@ class CurrencySeeder extends Seeder
             DB::table('currencies')->insert([
                 'name' => $currency['name'],
                 'symbol' => $currency['symbol'],
+                'icon' => $currency['icon'],
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
