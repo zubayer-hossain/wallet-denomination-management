@@ -45,5 +45,15 @@ class WalletController extends Controller
             return response()->json(['error' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function getBalances($wallet_id)
+    {
+        try {
+            $balances = $this->walletService->getWalletBalances($wallet_id);
+            return response()->json($balances);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
+        }
+    }
 }
 

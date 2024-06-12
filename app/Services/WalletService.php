@@ -36,4 +36,10 @@ class WalletService
             $wallet->delete();
         });
     }
+
+    public function getWalletBalances($wallet_id)
+    {
+        $wallet = Wallet::with('balances.currency')->findOrFail($wallet_id);
+        return $wallet->balances;
+    }
 }
