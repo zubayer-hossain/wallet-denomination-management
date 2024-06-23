@@ -135,7 +135,7 @@ const TransactionTable = ({ walletId }) => {
                                      </div>
                                  </td>
                                  <td className="py-2 px-4">{new Date(transaction.created_at).toLocaleDateString()}</td>
-                                 <td className="py-2 px-4">{transaction.amount}</td>
+                                 <td className="py-2 px-4">{transaction?.currency?.icon} {transaction.amount}</td>
                                  <td className="py-2 px-4">{transaction.description}</td>
                                  <td className="py-2 px-4">{transaction.status}</td>
                              </tr>

@@ -44,6 +44,8 @@ class TransactionService
             $walletDefaultCurrencyBalance->balance += $data['type'] == TransactionType::Credit->value ? $data['amount'] : -$data['amount'];
             $walletDefaultCurrencyBalance->save();
 
+            // load currency relation
+            $transaction->load('currency');
             return $transaction;
         });
     }
